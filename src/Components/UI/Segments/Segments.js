@@ -1,6 +1,7 @@
 import React from "react";
 import classes from "./Segments.module.css";
 import { useState } from "react";
+import * as Constants from "../../../Share/Constants/Constant";
 
 const SegementsControl = (props) => {
   const activedSegments = [classes.Button, classes.Active];
@@ -18,18 +19,18 @@ const SegementsControl = (props) => {
     <ul className={classes.Segments}>
       <li className={classes.SegmentItem}>
         <button
-          className={getActivedClasses(0)}
-          onClick={() => setActivedIndex(0)}
+          className={getActivedClasses(Constants.SEGMENT_ALL_INDEX)}
+          onClick={() => setActivedIndex(Constants.SEGMENT_ALL_INDEX)}
         >
-          All Products
+          {Constants.SEGEMNT_ALL_TEXT}
         </button>
       </li>
       <li className={classes.SegmentItem}>
         <button
-          className={getActivedClasses(1)}
-          onClick={() => setActivedIndex(1)}
+          className={getActivedClasses(Constants.SEGMENT_FAVORITE_TEXT)}
+          onClick={() => setActivedIndex(Constants.SEGMENT_FAVORITE_TEXT)}
         >
-          Favorite
+          {Constants.SEGMENT_FAVORITE_TEXT}
         </button>
       </li>
     </ul>

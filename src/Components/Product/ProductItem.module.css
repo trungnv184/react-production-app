@@ -1,0 +1,38 @@
+.ProductItem {
+    display: flex;
+    flex: 1;
+    height: auto;
+    min-height: 200px;
+    box-sizing: border-box;
+    margin: 20px auto;
+    padding: 8px;
+}
+
+.Title {
+    font-weight: bold;
+    font-size: 16px;
+    align-content: center;
+    align-self: center;
+}
+
+.Description {
+    white-space: nowrap;
+    overflow: hidden;
+    text-overflow: ellipsis;
+    flex: 2;
+}
+
+.FavoriteButton {
+    height: 40px;
+    width: 160px;
+    padding: 0 8px;
+    font-weight: bold;
+    background-color: red;
+    color: white;
+    font-size: 16px;
+    align-self: flex-start;
+}
+
+.FavoriteButton:hover {
+    background-color: orchid;
+}
