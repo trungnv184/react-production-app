@@ -1,8 +1,15 @@
 import React from "react";
-import "./App.css";
+import classes from "./App.module.css";
+import Layout from "./Hocs/Layout/Layout";
 
-function App() {
-  return <div className="App"></div>;
-}
+const App = () => {
+  return (
+    <div className={classes.App}>
+      <Layout>
+        <p>Hello</p>
+      </Layout>
+    </div>
+  );
+};
 
 export default App;
