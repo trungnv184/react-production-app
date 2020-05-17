@@ -1,0 +1,21 @@
+.Button {
+    height: 40px;
+    width: 160px;
+    padding: 0 8px;
+    font-weight: bold;
+    background-color: white;
+    border: 1px solid red;
+    color: red;
+    font-size: 16px;
+    align-self: flex-start;
+}
+
+.Button:hover {
+    background-color: green;
+    border: 0;
+}
+
+.Active {
+    background-color: red;
+    color: white;
+}

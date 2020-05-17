@@ -2,6 +2,7 @@ import React, { useEffect } from "react";
 import PropTypes from "prop-types";
 import Card from "../UI/Card/Card";
 import classes from "./ProductItem.module.css";
+import Button from "../UI/Button/Button";
 
 const ProductItem = (props) => {
   const { product } = props;
@@ -15,7 +16,7 @@ const ProductItem = (props) => {
       <Card>
         <h3 className={classes.Title}>{product.name}</h3>
         <p className={classes.description}>{product.description}</p>
-        <button className={classes.FavoriteButton}>Favorite</button>
+        <Button isFavorite={product.isFavorited} />
       </Card>
     </div>
   );
