@@ -5,7 +5,7 @@ import classes from "./ProductItem.module.css";
 import Button from "../UI/Button/Button";
 
 const ProductItem = (props) => {
-  const { product } = props;
+  const { product, setFavorite } = props;
 
   useEffect(() => {
     console.log("PRODUCT ITEM  MOUNTED", product);
@@ -16,7 +16,7 @@ const ProductItem = (props) => {
       <Card>
         <h3 className={classes.Title}>{product.name}</h3>
         <p className={classes.description}>{product.description}</p>
-        <Button isFavorite={product.isFavorited} />
+        <Button isActive={product.isFavorited} changeStatus={setFavorite} />
       </Card>
     </div>
   );
@@ -28,6 +28,7 @@ ProductItem.propTypes = {
     description: PropTypes.string.isRequired,
     isFavorited: PropTypes.bool,
   }),
+  setFavorite: PropTypes.func,
 };
 
 export default ProductItem;

@@ -4,22 +4,28 @@ import * as Constants from "../../../Share/Constants/Constant";
 import PropTypes from "prop-types";
 
 const Button = (props) => {
-  const { isFavorite } = props;
+  const { isActive, changeStatus } = props;
   const buttonClasses = [classes.Button];
 
-  if (isFavorite) {
+  if (isActive) {
     buttonClasses.push(classes.Active);
   }
 
-  const title = isFavorite
-    ? Constants.FAVORITE_TEXT
-    : Constants.UNFAVORITE_TEXT;
+  const title = isActive ? Constants.FAVORITE_TEXT : Constants.UNFAVORITE_TEXT;
 
-  return <button className={buttonClasses.join(" ")}>{title}</button>;
+  const onClickHandler = () => {
+    console.log("click on", changeStatus);
+    changeStatus();
+  };
+  return (
+    <button className={buttonClasses.join(" ")} onClick={onClickHandler}>
+      {title}
+    </button>
+  );
 };
 
 Button.propTypes = {
-  isFavorite: PropTypes.bool.isRequired,
+  isActive: PropTypes.bool.isRequired,
 };
 
 export default Button;
