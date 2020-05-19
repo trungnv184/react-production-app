@@ -5,13 +5,14 @@ const loadProductList = (state, action) => {
   return [...state, ...Constants.PRODUCT_MOCK_DATA];
 };
 const setFavoriteProduct = (state, action) => {
-  const { productId, isFavorite } = action;
+  const { productId } = action;
   const newProductList = [...state];
   const productFoundIndex = newProductList.findIndex(
     (product) => product.id === productId
   );
+  const currentStatus = newProductList[productFoundIndex].isFavorited;
   if (productFoundIndex >= 0) {
-    newProductList[productFoundIndex].isFavorited = isFavorite;
+    newProductList[productFoundIndex].isFavorited = !currentStatus;
   }
   return newProductList;
 };

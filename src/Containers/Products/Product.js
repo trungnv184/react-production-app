@@ -11,16 +11,16 @@ const Products = (props) => {
     dispatch(productActions.loadProductList());
   }, [dispatch]);
 
-  const onChangeProductStatus = (id, isFavorited) =>
-    dispatch(productActions.setFavoriteProduct(id, isFavorited));
+  const onChangeProductStatus = useCallback(
+    (id) => {
+      dispatch(productActions.setFavoriteProduct(id));
+    },
+    [dispatch]
+  );
 
   useEffect(() => {
     onLoadProducts();
   }, [onLoadProducts]);
-
-  useEffect(() => {
-    console.log("[Products] Render");
-  });
 
   let productData = null;
   if (productList && productList.length > 0) {
@@ -29,7 +29,7 @@ const Products = (props) => {
         <ProductItem
           key={p.id}
           product={p}
-          setFavorite={() => onChangeProductStatus(p.id, !p.isFavorited)}
+          setFavorite={() => onChangeProductStatus(p.id)}
         />
       );
     });

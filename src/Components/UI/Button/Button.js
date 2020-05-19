@@ -14,7 +14,6 @@ const Button = (props) => {
   const title = isActive ? Constants.FAVORITE_TEXT : Constants.UNFAVORITE_TEXT;
 
   const onClickHandler = () => {
-    console.log("click on", changeStatus);
     changeStatus();
   };
   return (

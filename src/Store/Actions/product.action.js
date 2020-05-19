@@ -5,11 +5,10 @@ export const loadProductList = () => {
     type: actionTypes.LOAD_PRODUCTS_LIST,
   };
 };
-export const setFavoriteProduct = (productId, isFavorite) => {
+export const setFavoriteProduct = (productId) => {
   return {
     type: actionTypes.SET_PRODUCT_FAVORITE,
     productId: productId,
-    isFavorite: isFavorite,
   };
 };
 
