@@ -2,7 +2,7 @@ import * as actionTypes from "../Actions/action-types";
 import * as Constants from "../../Share/Constants/Constant";
 
 const loadProductList = (state, action) => {
-  return [...state, ...Constants.PRODUCT_MOCK_DATA];
+  return [...Constants.PRODUCT_MOCK_DATA];
 };
 const setFavoriteProduct = (state, action) => {
   const { productId } = action;
@@ -17,12 +17,19 @@ const setFavoriteProduct = (state, action) => {
   return newProductList;
 };
 
+const filterFavoriteProducts = (state) => {
+  return state.filter((p) => p && p.isFavorited);
+};
+
 const productReducer = (state = [], action) => {
   switch (action.type) {
     case actionTypes.LOAD_PRODUCTS_LIST:
       return loadProductList(state, action);
     case actionTypes.SET_PRODUCT_FAVORITE:
       return setFavoriteProduct(state, action);
+
+    case actionTypes.FILTER_FAVORITE_PRODUCTS:
+      return filterFavoriteProducts(state);
     default:
       return state;
   }

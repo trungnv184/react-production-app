@@ -13,6 +13,7 @@
     color: #ffffff;
     font-size: large;
     flex: 1;
+    height: 40px;
 }
 
 .Button {
@@ -26,6 +27,28 @@
 
 .Active {
     background-color: #e63946;
+    color: white;
+}
+
+
+.SegmentItem a {
+    text-decoration: none;
+    background-color: #ffffff;
+    color: red;
+    height: 100%;
+    font-weight: 500;
+    font-size: 14px;
+    border: 1px solid #cccccc;
+    width: 100%;
+    box-sizing: border-box;
+    display: flex;
+    justify-content: center;
+    align-items: center;
+    box-sizing: border-box;
+}
+
+.SegmentItem .active {
+    background-color: red;
     color: white;
 }
 

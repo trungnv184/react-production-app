@@ -2,6 +2,7 @@ import React, { useEffect, useCallback } from "react";
 import ProductCard from "../../Components/ProductCard/ProductCard";
 import { useSelector, useDispatch } from "react-redux";
 import * as productActions from "../../Store/Actions/index";
+import Spinner from "../../Components/UI/Spinner/Spinner";
 
 const Products = (props) => {
   const dispatch = useDispatch();
@@ -22,7 +23,7 @@ const Products = (props) => {
     onLoadProducts();
   }, [onLoadProducts]);
 
-  let productData = null;
+  let productData = <Spinner />;
   if (productList && productList.length > 0) {
     productData = productList.map((p) => {
       return (
