@@ -1,13 +1,3 @@
-.ProductItem {
-    display: flex;
-    flex: 1;
-    height: auto;
-    min-height: 200px;
-    box-sizing: border-box;
-    margin: 20px auto;
-    padding: 8px;
-}
-
 .Title {
     font-weight: bold;
     font-size: 16px;

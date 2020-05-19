@@ -1,10 +1,11 @@
 import React from "react";
 import PropTypes from "prop-types";
 import Card from "../UI/Card/Card";
-import classes from "./ProductItem.module.css";
+import classes from "./ProductCard.module.css";
 import Button from "../UI/Button/Button";
+import ProductItem from "../ProductItem/ProductItem";
 
-const ProductItem = (props) => {
+const ProductCard = (props) => {
   const { product, setFavorite } = props;
 
   console.log("PRODUCT ITEM RENDER");
@@ -12,15 +13,14 @@ const ProductItem = (props) => {
   return (
     <div className={classes.ProductItem}>
       <Card>
-        <h3 className={classes.Title}>{product.name}</h3>
-        <p className={classes.description}>{product.description}</p>
+        <ProductItem name={product.name} description={product.description} />
         <Button isActive={product.isFavorited} changeStatus={setFavorite} />
       </Card>
     </div>
   );
 };
 
-ProductItem.propTypes = {
+ProductCard.propTypes = {
   product: PropTypes.shape({
     name: PropTypes.string.isRequired,
     description: PropTypes.string.isRequired,
@@ -29,4 +29,4 @@ ProductItem.propTypes = {
   setFavorite: PropTypes.func,
 };
 
-export default ProductItem;
+export default ProductCard;

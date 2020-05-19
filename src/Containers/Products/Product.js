@@ -1,5 +1,5 @@
 import React, { useEffect, useCallback } from "react";
-import ProductItem from "../../Components/Product/ProductItem";
+import ProductCard from "../../Components/ProductCard/ProductCard";
 import { useSelector, useDispatch } from "react-redux";
 import * as productActions from "../../Store/Actions/index";
 
@@ -26,7 +26,7 @@ const Products = (props) => {
   if (productList && productList.length > 0) {
     productData = productList.map((p) => {
       return (
-        <ProductItem
+        <ProductCard
           key={p.id}
           product={p}
           setFavorite={() => onChangeProductStatus(p.id)}
