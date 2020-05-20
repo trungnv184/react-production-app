@@ -2,7 +2,6 @@ import React, { Suspense } from "react";
 import classes from "./App.module.css";
 import Layout from "./Hocs/Layout/Layout";
 import { Switch, Route } from "react-router-dom";
-import FavComp from "./Containers/Fav/FavoriteProduct";
 import Spinner from "./Components/UI/Spinner/Spinner";
 const Products = React.lazy(() => import("./Containers/Products/Product"));
 const FavoriteComp = React.lazy(() =>

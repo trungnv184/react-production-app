@@ -8,6 +8,7 @@ import App from "./App";
 import * as serviceWorker from "./serviceWorker";
 import { BrowserRouter } from "react-router-dom";
 import { Provider } from "react-redux";
+import { ProductProvider } from "./Context/product-context";
 
 const rootReducer = combineReducers({
   products: productReducer,
@@ -28,11 +29,11 @@ const store = createStore(
 );
 
 ReactDOM.render(
-  <Provider store={store}>
+  <ProductProvider>
     <BrowserRouter>
       <App />
     </BrowserRouter>
-  </Provider>,
+  </ProductProvider>,
   document.getElementById("root")
 );
 

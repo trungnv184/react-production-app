@@ -1,36 +1,19 @@
-import React, { useEffect, useCallback } from "react";
+import React, { useContext } from "react";
 import ProductCard from "../../Components/ProductCard/ProductCard";
-import { useSelector, useDispatch } from "react-redux";
-import * as productActions from "../../Store/Actions/index";
 import Spinner from "../../Components/UI/Spinner/Spinner";
+import { ProductContext } from "../../Context/product-context";
 
 const Products = (props) => {
-  const dispatch = useDispatch();
-  const productList = useSelector((state) => state.products);
-
-  const onLoadProducts = useCallback(() => {
-    dispatch(productActions.loadProductList());
-  }, [dispatch]);
-
-  const onChangeProductStatus = useCallback(
-    (id) => {
-      dispatch(productActions.setFavoriteProduct(id));
-    },
-    [dispatch]
-  );
-
-  useEffect(() => {
-    onLoadProducts();
-  }, [onLoadProducts]);
-
+  const { products, toggleProduct } = useContext(ProductContext);
+  console.log("Product Render");
   let productData = <Spinner />;
-  if (productList && productList.length > 0) {
-    productData = productList.map((p) => {
+  if (products && products.length > 0) {
+    productData = products.map((p) => {
       return (
         <ProductCard
           key={p.id}
           product={p}
-          setFavorite={() => onChangeProductStatus(p.id)}
+          setFavorite={() => toggleProduct(p.id)}
         />
       );
     });

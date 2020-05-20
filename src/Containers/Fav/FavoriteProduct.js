@@ -1,30 +1,20 @@
-import React, { useEffect, useCallback } from "react";
-import { useSelector, useDispatch } from "react-redux";
-import * as actions from "../../Store/Actions/index";
+import React, { useContext } from "react";
 import ProductCard from "../../Components/ProductCard/ProductCard";
+import { ProductContext } from "../../Context/product-context";
 
 const FavProduct = (props) => {
-  const dispatch = useDispatch();
-  const products = useSelector((state) =>
-    state.products.filter((p) => p.isFavorited)
-  );
-
-  const onChangeProductStatus = useCallback(
-    (id) => {
-      dispatch(actions.setFavoriteProduct(id));
-    },
-    [dispatch]
-  );
-
+  const { products, toggleProduct } = useContext(ProductContext);
   let productData = null;
   if (products && products.length > 0) {
-    productData = products.map((p) => (
-      <ProductCard
-        key={p.id}
-        product={p}
-        setFavorite={() => onChangeProductStatus(p.id)}
-      />
-    ));
+    productData = products
+      .filter((p) => p.isFavorited)
+      .map((p) => (
+        <ProductCard
+          key={p.id}
+          product={p}
+          setFavorite={() => toggleProduct(p.id)}
+        />
+      ));
   }
 
   return <React.Fragment>{productData}</React.Fragment>;
