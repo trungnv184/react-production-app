@@ -1,8 +1,9 @@
 import * as actionTypes from "./action-types";
 
-export const loadProductList = () => {
+export const loadProductList = (products) => {
   return {
     type: actionTypes.LOAD_PRODUCTS_LIST,
+    products: products,
   };
 };
 export const setFavoriteProduct = (productId) => {
