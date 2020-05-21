@@ -8,10 +8,14 @@ import App from "./App";
 import * as serviceWorker from "./serviceWorker";
 import { BrowserRouter } from "react-router-dom";
 import { Provider } from "react-redux";
+import createSagaMiddleware from "redux-saga";
+import productSaga from "./Store/Sagas/product.saga";
 
 const rootReducer = combineReducers({
   products: productReducer,
 });
+
+const sagaMiddleware = createSagaMiddleware();
 
 const logger = (store) => (next) => (action) => {
   console.log("dispatching", action);
@@ -24,8 +28,10 @@ const composeEnhancers = window.__REDUX_DEVTOOLS_EXTENSION_COMPOSE__ || compose;
 
 const store = createStore(
   rootReducer,
-  composeEnhancers(applyMiddleware(thunk, logger))
+  composeEnhancers(applyMiddleware(thunk, logger, sagaMiddleware))
 );
+
+sagaMiddleware.run(productSaga);
 
 ReactDOM.render(
   <Provider store={store}>

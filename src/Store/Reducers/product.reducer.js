@@ -1,9 +1,13 @@
 import * as actionTypes from "../Actions/action-types";
-import * as Constants from "../../Share/Constants/Constant";
 
 const loadProductList = (state, action) => {
-  return [...Constants.PRODUCT_MOCK_DATA];
+  return [];
 };
+
+const loadProductSucceed = (state, action) => {
+  return [...action.products];
+};
+
 const setFavoriteProduct = (state, action) => {
   const { productId } = action;
   const newProductList = [...state];
@@ -25,6 +29,10 @@ const productReducer = (state = [], action) => {
   switch (action.type) {
     case actionTypes.LOAD_PRODUCTS_LIST:
       return loadProductList(state, action);
+
+    case actionTypes.LOAD_PRODUCT_SUCCEED:
+      return loadProductSucceed(state, action);
+
     case actionTypes.SET_PRODUCT_FAVORITE:
       return setFavoriteProduct(state, action);
 
